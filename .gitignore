@@ -1,0 +1,3 @@
+.sublime-gulp.cache
+node_modules
+public/build
