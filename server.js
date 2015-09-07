@@ -1,3 +1,7 @@
+
+// JSX transpiler
+require("node-jsx").install();
+
 var express = require("express")
 	, path = require("path")
 	, app = express()
@@ -8,8 +12,12 @@ var express = require("express")
 	, log = require("winston") 
 	, httpProxy = require('http-proxy')
 	, proxy = httpProxy.createProxyServer()
+  , React = require("react")
+  , ReactApp = React.createFactory(require('./app/ReactApp.jsx').ReactApp);
 ;
 
+app.set("views", path.resolve(__dirname, "app"));
+app.set("view engine", "jade");
 log.level = "verbose";
 
 
@@ -39,6 +47,14 @@ if (!isProduction) {
   });
 
 }
+
+app.get("/", function(req, res){
+  var reactHtml = React.renderToString(ReactApp({}));
+  console.log(reactHtml);
+  res.render('index.jade', {
+    reactOutput: reactHtml
+  })
+});
 
 // It is important to catch any errors from the proxy or the
 // server will crash. An example of this is connecting to the
