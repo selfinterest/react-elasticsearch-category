@@ -1,5 +1,5 @@
 'use strict'
-import { Router, Route, Link } from 'react-router';
+import { Router, Route, Link, RouteHandler } from 'react-router';
 import Nav from './nav/nav';
 
 var React = require('react');
@@ -16,6 +16,9 @@ module.exports.ReactApp = React.createClass({
 	        					<h1>Hello { this.props.name }</h1>
 	    					</div>
 	    				</div>
+                        <div className="row">
+                             <RouteHandler />
+                        </div>
     				</div>
         		</div> 
         	
