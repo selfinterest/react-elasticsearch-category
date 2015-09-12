@@ -1,9 +1,13 @@
 'use strict'
-var React = require('react')
-var Nav = require("./nav/nav")
+import { Router, Route, Link } from 'react-router';
+import Nav from './nav/nav';
+
+var React = require('react');
+
+
 module.exports.ReactApp = React.createClass({
     displayName: 'HelloReact',
-    render: function(){
+    render() {
         return <div>
         			<Nav/>
         			<div className="container">
